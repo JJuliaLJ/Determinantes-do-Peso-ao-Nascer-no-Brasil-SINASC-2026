@@ -1,6 +1,12 @@
-#  **Dahsboard**
+# **Dahsboard**
 
-## **Características Principais**<br>
+### Conjunto de Dados 
+
+- Dataset Utilizado: 
+
+- Justificativa:
+
+- Formato: CSV
 
 
 ## Tecnologias Utilizadas<br>
@@ -20,7 +26,8 @@
 ### Como Rodar o Projeto<br>
 1. Clone o repositório<br>
 ```
-git clone
+git clone https://github.com/juliaism/Projeto-Dashboard.git
+```
 
 
 
