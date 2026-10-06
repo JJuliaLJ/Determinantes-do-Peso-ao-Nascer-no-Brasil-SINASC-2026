@@ -26,7 +26,7 @@
 ### Como Rodar o Projeto<br>
 1. Clone o repositório<br>
 ```
-git clone https://github.com/juliaism/Projeto-Dashboard.git
+git clone <url-do-projeto>
 ```
 
 
