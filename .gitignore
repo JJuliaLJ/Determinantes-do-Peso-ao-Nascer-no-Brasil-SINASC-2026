@@ -1,0 +1,16 @@
+SINASC_*.csv
+SINASC_*.zip
+*.csv.zip
+
+EXPLICACAO.md
+analise-documentado.ipynb
+
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+
+.DS_Store
+Thumbs.db
