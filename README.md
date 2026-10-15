@@ -54,6 +54,8 @@ Ministério da Saúde?
 ```
 Projeto-Dashboard/
 ├── analise.ipynb        # notebook completo: limpeza, EDA, testes, regressão, previsão
+├── dashboard.py         # aplicativo Streamlit (7 abas)
+├── requirements.txt
 ├── README.md
 └── dados/               # artefatos gerados pelo notebook (Parquet)
     ├── sinasc_amostra.parquet          # amostra estratificada por UF (149.999 registros)
@@ -69,12 +71,41 @@ Projeto-Dashboard/
     └── metricas_modelo.parquet
 ```
 
+## Dashboard
+
+`dashboard.py` é um aplicativo Streamlit que lê exclusivamente os artefatos Parquet de
+`dados/` — não depende do CSV bruto nem da reexecução do notebook.
+
+### Abas
+
+| Aba | Conteúdo | Fonte |
+|---|---|---|
+| Exploração | Distribuição de variável contínua, comparação entre grupos (média com IC, boxplot, violino) e dispersão bivariada com ajuste linear e correlações | Amostra filtrada |
+| Território | Indicadores por UF e região ordenados, cruzamento de dois indicadores, resíduos do modelo agregado | Amostra filtrada e população completa |
+| Temporal | Série mensal com dois eixos e peso por semana gestacional com faixa de IC | Amostra filtrada ou população completa |
+| Prevalências | Intervalos de Wilson dos indicadores binários e recálculo por categoria | População completa e amostra filtrada |
+| Testes de hipóteses | Estatística, graus de liberdade, valor-p, tamanho de efeito e IC das seis hipóteses, mais teste t de Welch executado ao vivo sobre o recorte | População completa e amostra filtrada |
+| Regressão | Comparação dos cinco modelos, coeficientes do M3 com IC robusto HC3 e diagnóstico de resíduos | População completa e amostra filtrada |
+| Simulador | Previsão pontual, intervalo de previsão, probabilidade de baixo peso, curva de sensibilidade e matriz de cenários de pré-natal | Coeficientes do M3 |
+
+### Controles globais
+
+A barra lateral define o nível de confiança (80%, 90%, 95% ou 99%), aplicado a todos os
+intervalos recalculados em tempo de execução, e os filtros de região, UF, escolaridade,
+raça/cor, sexo, via de parto, adequação do pré-natal, faixa de semanas gestacionais e faixa
+de idade materna.
+
+Os filtros atuam sobre as análises derivadas da amostra estratificada de 149.999 registros.
+Os resultados calculados sobre a população completa (1.388.675 registros) — prevalências,
+testes de hipóteses, coeficientes e métricas dos modelos — vêm pré-computados do notebook e
+não respondem aos filtros, o que está indicado na própria interface.
+
 ## Executar Localmente
 
 ### Pré-requisitos
 
 ```
-pip install pandas numpy scipy statsmodels scikit-learn matplotlib seaborn pyarrow jupyter
+pip install -r requirements.txt
 ```
 
 ### Como rodar o projeto
@@ -86,22 +117,32 @@ git clone https://github.com/JJuliaLJ/Projeto-Dashboard.git
 cd Projeto-Dashboard
 ```
 
-2. Baixe o dataset e descompacte `SINASC_2026.csv` no diretório do projeto ou no diretório pai
-   (o notebook procura nos dois, além da subpasta `dados/`).
+2. Para abrir o dashboard, os artefatos de `dados/` já estão versionados:
 
-3. Execute o notebook
+```
+streamlit run dashboard.py
+```
+
+3. Para reexecutar a análise do zero, baixe o dataset e descompacte `SINASC_2026.csv` no
+   diretório do projeto ou no diretório pai (o notebook procura nos dois, além da subpasta
+   `dados/`), e execute o notebook:
 
 ```
 jupyter notebook analise.ipynb
 ```
 
-A execução completa leva de 8 a 12 minutos e gera os arquivos Parquet em `dados/`.
+A execução completa leva de 8 a 12 minutos e regenera os arquivos Parquet em `dados/`.
 
 ## Nota sobre o código
 
 Conforme o enunciado do trabalho, o código do notebook é entregue **sem comentários** — a
 compreensão da implementação, as justificativas das técnicas estatísticas aplicadas e a
-interpretação dos resultados são apresentadas na defesa oral.
+interpretação dos resultados são apresentadas na defesa oral. O mesmo critério foi aplicado
+a `dashboard.py`.
+
+Também conforme o enunciado, o dashboard não exibe textos que apresentem conclusões ao
+usuário. As legendas de cada elemento declaram apenas o objetivo analítico do gráfico; a
+leitura dos resultados cabe a quem explora a interface.
 
 ### Roteiro do notebook
 
