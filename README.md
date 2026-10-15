@@ -1,6 +1,6 @@
 # **Dahsboard**
 
-### Conjunto de Dados 
+### **Conjunto de Dados**
 
 - Dataset Utilizado: https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SINASC/csv/SINASC_2026_csv.zip
 
@@ -9,21 +9,15 @@
 - Formato: CSV
 
 
-## Tecnologias Utilizadas<br>
-| Tecnologia | Tipo | Descrição |
-|---|---|---|
+## **Tecnologias Utilizadas**<br>
+| Tecnologia | Descrição |
+|---|---|
+| Python |---|
+| Pandas |---|
+| Jupyter Notebook |---|
 
-
-
-## **Estrutura do Projeto**<br>
-```
-```
 
 ##  **Executar Localmente**<br>
-
-
-
-### Como Rodar o Projeto<br>
 1. Clone o repositório<br>
 ```
 git clone <url-do-projeto>
