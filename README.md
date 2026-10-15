@@ -10,7 +10,7 @@ sobre os microdados do Sistema de Informações sobre Nascidos Vivos, com dashbo
 - **Fonte:** https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SINASC/csv/SINASC_2026_csv.zip
 - **Formato:** CSV, separador `;`, codificação latin-1, 61 colunas
 - **Volume:** 1.504.579 registros (~530 MB), nascimentos de janeiro a agosto de 2026
-- **Justificativa da escolha:** é um censo administrativo de cobertura quase universal, com
+- **Justificativa da escolha:** Évum censo administrativo de cobertura quase universal, com
   desfecho contínuo adequado a regressão linear (`PESO`, em gramas), variável acionável por
   política pública (número e precocidade das consultas de pré-natal) e relevância sanitária
   direta — o baixo peso ao nascer é o preditor isolado mais forte de mortalidade neonatal e
@@ -133,16 +133,6 @@ jupyter notebook analise.ipynb
 
 A execução completa leva de 8 a 12 minutos e regenera os arquivos Parquet em `dados/`.
 
-## Nota sobre o código
-
-Conforme o enunciado do trabalho, o código do notebook é entregue **sem comentários** — a
-compreensão da implementação, as justificativas das técnicas estatísticas aplicadas e a
-interpretação dos resultados são apresentadas na defesa oral. O mesmo critério foi aplicado
-a `dashboard.py`.
-
-Também conforme o enunciado, o dashboard não exibe textos que apresentem conclusões ao
-usuário. As legendas de cada elemento declaram apenas o objetivo analítico do gráfico; a
-leitura dos resultados cabe a quem explora a interface.
 
 ### Roteiro do notebook
 
