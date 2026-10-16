@@ -256,6 +256,71 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown("""
+<style>
+
+html, body, [class*="css"] {
+    font-size: 18px !important;
+}
+
+h1 {
+    font-size: 42px !important;
+}
+
+h2 {
+    font-size: 34px !important;
+}
+
+h3 {
+    font-size: 28px !important;
+}
+
+p {
+    font-size: 18px !important;
+}
+
+label {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stDataFrame"] div {
+    font-size: 16px !important;
+}
+
+button[data-baseweb="tab"] {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+button[kind] {
+    font-size: 18px !important;
+}
+
+div[data-baseweb="select"] {
+    font-size: 18px !important;
+}
+
+input {
+    font-size: 18px !important;
+}
+
+[role="radiogroup"] label {
+    font-size: 18px !important;
+}
+
+[data-testid="stCheckbox"] label {
+    font-size: 18px !important;
+}
+
+[data-testid="stSlider"] {
+    font-size: 18px !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
 amostra = carregar_amostra()
 coeficientes = mapa_coeficientes()
 
@@ -293,7 +358,16 @@ recorte = recorte[
     & recorte["IDADEMAE"].between(*faixa_idade)
 ]
 
-st.sidebar.metric("Registros no recorte", numero(len(recorte)))
+st.sidebar.markdown(
+    f"""
+    <div>
+        <p style='margin-bottom: 0px; color: white;'>Registros no recorte</p>
+        <h1 style='text-align: center; margin-top: 0px; font-size: 20px;'>{numero(len(recorte))}</h1>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+
 st.sidebar.caption(
     "Os filtros alteram as abas Exploração, Território, Temporal e Regressão. "
     "As abas Prevalências e Testes de hipóteses trazem resultados calculados "
