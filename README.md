@@ -1,6 +1,6 @@
 # Dashboard — Determinantes do Peso ao Nascer no Brasil (SINASC 2026)
 
-Projeto de Modelagem Estatística: análise descritiva, testes de hipóteses e regressão linear
+Análise descritiva, testes de hipóteses e regressão linear
 sobre os microdados do Sistema de Informações sobre Nascidos Vivos, com dashboard interativo.
 
 ## Conjunto de Dados
@@ -8,9 +8,9 @@ sobre os microdados do Sistema de Informações sobre Nascidos Vivos, com dashbo
 - **Dataset utilizado:** SINASC 2026 — Sistema de Informações sobre Nascidos Vivos (Ministério da
   Saúde / DATASUS)
 - **Fonte:** https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SINASC/csv/SINASC_2026_csv.zip
-- **Formato:** CSV, separador `;`, codificação latin-1, 61 colunas
+- **Formato:** CSV
 - **Volume:** 1.504.579 registros (~530 MB), nascimentos de janeiro a agosto de 2026
-- **Justificativa da escolha:** Évum censo administrativo de cobertura quase universal, com
+- **Justificativa da escolha:** É um censo administrativo de cobertura quase universal, com
   desfecho contínuo adequado a regressão linear (`PESO`, em gramas), variável acionável por
   política pública (número e precocidade das consultas de pré-natal) e relevância sanitária
   direta — o baixo peso ao nascer é o preditor isolado mais forte de mortalidade neonatal e
@@ -113,8 +113,7 @@ pip install -r requirements.txt
 1. Clone o repositório
 
 ```
-git clone https://github.com/JJuliaLJ/Projeto-Dashboard.git
-cd Projeto-Dashboard
+git clone <url-do-repositorio>
 ```
 
 2. Para abrir o dashboard, os artefatos de `dados/` já estão versionados:
